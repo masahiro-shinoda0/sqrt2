@@ -46,3 +46,40 @@
 
 #### 解法2
 もとの漸化式から，$`\sqrt{2}, -\sqrt{2}`$ をそれぞれ引いたものを考える。
+
+<p align="center">
+  $A_{n+1}-\sqrt{2}=\frac{{A_n}^2+2-2\sqrt{2}A_n}{2A_n} = \frac{(A_n-\sqrt{2})^2}{2A_n}$
+</p>
+
+同様にして，
+
+<p align="center">
+  $A_{n+1}+\sqrt{2}=\frac{{A_n}^2+2+2\sqrt{2}A_n}{2A_n} = \frac{(A_n+\sqrt{2})^2}{2A_n}$
+</p>
+
+辺々割ると，
+
+<p align="center">
+  $\frac{A_{n+1}+\sqrt{2}}{A_{n+1}-\sqrt{2}} = \frac{(A_n+\sqrt{2})^2}{(A_n-\sqrt{2})^2} = (\frac{A_n+\sqrt{2}}{A_n-\sqrt{2}})^2$
+</p>
+
+ここで，$`B_n=\frac{A_n+\sqrt{2}}{A_n-\sqrt{2}}`$ とおくと，$`B_{n+1} = {B_n}^2`$ である。両辺対数を取ると，$`\log{B_{n+1}} = 2\log{B_n}`$ となる。\
+ここで，$`C_n=\log{B_n}`$ とおくと，$`C_{n+1} = 2C_n`$ である。$`C_1=\log{B_1}=\log{\frac{A_1+\sqrt{2}}{A_1-\sqrt{2}}}=\log{(3+2\sqrt{2})}`$ より，$`C_n`$ の一般項は，
+
+<p align="center">
+  $C_n = C_1 \cdot 2^{n-1} = \log{(3+2\sqrt{2})} \cdot 2^{n-1}$
+</p>
+
+よって，$`B_n`$ の一般項は，
+
+<p align="center">
+  $B_n = e^{C_n} = e^{\log{(3+2\sqrt{2})} \cdot 2^{n-1}} = (3+2\sqrt{2}) \cdot e^{2^{n-1}}$
+</p>
+
+よって，$`A_n`$ の一般項は，
+
+<p align="center">
+  $A_n = \sqrt{2} \cdot \frac{B_n+1}{B_n-1} = \sqrt{2} \cdot \frac{(3+2\sqrt{2}) \cdot e^{2^{n-1}}+1}{(3+2\sqrt{2}) \cdot e^{2^{n-1}}-1} = \sqrt{2} \cdot \frac{(3+2\sqrt{2}) +e^{-2^{n-1}}}{(3+2\sqrt{2}) -e^{-2^{n-1}}}$
+</p>
+
+したがって，$`\lim_{n\to \infty} A_n = \sqrt{2} \cdot \frac{3+2\sqrt{2}+0}{3+2\sqrt{2}-0} = \sqrt{2}`$
